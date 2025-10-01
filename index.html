@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/styles.css">
+    <title>Kelompok 5</title>
+</head>
+<body>
+    <div class="popup-overlay" id="welcomePopup">
+        <div class="popup-content">
+            <h2>Selamat Datang! 👋</h2>
+            <p><strong>Memodelkan Diskon Berlapis pada E-Commerce.</strong></p>
+            <p>Project ini merupakan penggunaan Komposisi Fungsi dalam kehidupan sehari-hari.</p> 
+            <div class="popup-features">
+                <p><strong>Anggota kelompok 5 kelas E:</strong></p>
+                <ul>
+                    <li>1. Febriana Nugraha (129)</li>
+                    <li>2. Ryan Syahrul Muharam (135)</li>
+                    <li>3. Ayudia Fasha (138)</li>
+                    <li>4. Fahmi Miftahudin (146)</li>
+                    <li>5. Muhammad Noufal Rafsanjani (153)</li>
+                </ul>
+            </div>
+            <p><strong>Cara Menggunakan:</strong></p>
+            <p>1. Masukkan harga awal dan nilai diskon<br>
+               2. Klik "Hitung Analisis"<br>
+               3. Lihat hasil dan rekomendasi
+            </p>
+            <div class="dont-show-again">
+                <label>
+                    <input type="checkbox" id="dontShowAgain"> Jangan tampilkan lagi
+                </label>
+            </div>
+            <button class="popup-btn" id="startBtn">Mulai Sekarang!</button>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Memodelkan Diskon Berlapis pada E-Commerce</h1>
+            <p>Dibuat oleh: Kelompok 5 Kelas E Informatika</p>
+        </header>
+
+        <div class="card">
+            <h2 class="card-title">Data Input</h2>
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="hargaAwal">Harga Awal Laptop (Rp)</label>
+                    <input type="number" id="hargaAwal" value="15000000" min="0">
+                </div>
+                <div class="input-field">
+                    <label for="diskonPersen">Diskon Persentase (%)</label>
+                    <input type="number" id="diskonPersen" value="10" min="0" max="100">
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="diskonNominal">Diskon Nominal (Rp)</label>
+                    <input type="number" id="diskonNominal" value="500000" min="0">
+                </div>
+                <div class="input-field">
+                    <label for="pajak">Pajak (%)</label>
+                    <input type="number" id="pajak" value="11" min="0">
+                </div>
+            </div>
+            <button class="btn" id="hitungBtn">Hitung Analisis</button>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Definisi Fungsi</h2>
+            <div class="function-definition">
+                f(x) = x - diskon_nominal → Fungsi diskon nominal<br>
+                g(x) = x * (1 - diskon_persen/100)  → Fungsi diskon persentase<br>
+                h(x) = x * (1 + pajak/100) → Fungsi penambahan pajak
+            </div>
+        </div>
+
+        <div id="hasilAnalisis" class="card">
+            <h2 class="card-title">Hasil Analisis</h2>
+            <div class="result-section">
+                <div class="result-box">
+                    <div class="result-title">(f ∘ g)(x) = f(g(x))</div>
+                    <div class="result-value" id="fogResult">Rp 0</div>
+                    <div class="result-description">Diskon persentase diterapkan terlebih dahulu, kemudian diskon nominal</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-title">(g ∘ f)(x) = g(f(x))</div>
+                    <div class="result-value" id="gofResult">Rp 0</div>
+                    <div class="result-description">Diskon nominal diterapkan terlebih dahulu, kemudian diskon persentase</div>
+                </div>
+            </div>
+
+            <div id="bestOption" class="best-option">
+                Urutan yang lebih menguntungkan akan ditampilkan di sini
+            </div>
+
+            <div class="result-section">
+                <div class="result-box">
+                    <div class="result-title">(h ∘ f ∘ g)(x) = h(f(g(x)))</div>
+                    <div class="result-value" id="hfogResult">Rp 0</div>
+                    <div class="result-description">Pajak diterapkan setelah kedua diskon (f ∘ g)</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-title">(h ∘ g ∘ f)(x) = h(g(f(x)))</div>
+                    <div class="result-value" id="hgofResult">Rp 0</div>
+                    <div class="result-description">Pajak diterapkan setelah kedua diskon (g ∘ f)</div>
+                </div>
+            </div>
+
+            <div class="comparison">
+                <h3 class="result-title">Perbandingan Harga Akhir</h3>
+                <div class="comparison-item">
+                    <span>Harga Awal:</span>
+                    <span id="hargaAwalResult">Rp 0</span>
+                </div>
+                <div class="comparison-item">
+                    <span>Setelah (f ∘ g)(x):</span>
+                    <span id="setelahFog">Rp 0</span>
+                </div>
+                <div class="comparison-item">
+                    <span>Setelah (g ∘ f)(x):</span>
+                    <span id="setelahGof">Rp 0</span>
+                </div>
+                <div class="comparison-item">
+                    <span>Setelah (h ∘ f ∘ g)(x):</span>
+                    <span id="setelahHfog">Rp 0</span>
+                </div>
+                <div class="comparison-item">
+                    <span>Setelah (h ∘ g ∘ f)(x):</span>
+                    <span id="setelahHgof">Rp 0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/main.js"></script>
+</body>
+</html>
