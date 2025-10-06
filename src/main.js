@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const dontShowPopup = localStorage.getItem('dontShowPopup');
 
     // Tampilkan popup setiap kali, kecuali jika pengguna memilih "jangan tampilkan lagi"
-    if (!dontShowPopup) {
-        welcomePopup.style.display = 'flex';
-        // Blok scroll saat popup terbuka
-        document.body.style.overflow = 'hidden';
-    }
+    // if (!dontShowPopup) {
+    //     welcomePopup.style.display = 'flex';
+    //     // Blok scroll saat popup terbuka
+    //     document.body.style.overflow = 'hidden';
+    // }
 
     // Fungsi untuk menutup popup
     function closePopup() {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Fungsi untuk memformat angka sebagai mata uang Rupiah
+    // Fungsi untuk memformat angka sebagai Rupiah
     function formatRupiah(angka) {
         return new Intl.NumberFormat('id-ID', {
             style: 'currency',

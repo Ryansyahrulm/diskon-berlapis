@@ -302,7 +302,7 @@ margin-right: 8px;
 }
 
 
-
+/* Mobile */
 @media (max-width: 768px) {
     .input-group {
         flex-direction: column;
